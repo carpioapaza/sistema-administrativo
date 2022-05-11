@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_24_044122) do
+ActiveRecord::Schema.define(version: 2022_05_11_043321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "c_lients", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -24,4 +47,48 @@ ActiveRecord::Schema.define(version: 2022_04_24_044122) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "image"
+    t.string "name"
+    t.string "description"
+    t.integer "existence"
+    t.decimal "price"
+    t.bigint "categories_id", null: false
+    t.bigint "suppliers_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["categories_id"], name: "index_products_on_categories_id"
+    t.index ["suppliers_id"], name: "index_products_on_suppliers_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "warehouse_records", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "user_id"
+    t.bigint "supplier_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_warehouse_records_on_product_id"
+    t.index ["supplier_id"], name: "index_warehouse_records_on_supplier_id"
+  end
+
+  add_foreign_key "products", "categories", column: "categories_id"
+  add_foreign_key "products", "suppliers", column: "suppliers_id"
+  add_foreign_key "warehouse_records", "products"
+  add_foreign_key "warehouse_records", "suppliers"
 end
