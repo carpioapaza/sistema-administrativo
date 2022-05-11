@@ -1,0 +1,56 @@
+
+<%= form_with(model: friend) do |form| %>
+  <% if friend.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(friend.errors.count, "error") %> No se puede guardar:</h2>
+
+      <ul>
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+
+                 
+                  
+                  <div class="form-group field">
+                    <%= form.label :name, class: "h3" %><br>
+                    <%= form.text_field :name,  class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+                  </div>
+
+                  <div class="form-group field">
+                    <%= form.label :surname, class: "h3" %><br>
+                    <%= form.text_field :surname,  class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+                  </div>
+
+                  <div class="form-group field">
+                    <%= form.label :address, class: "h3" %><br>
+                    <%= form.text_field :address,  class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+                  </div>
+
+                   <div class="form-group field">
+                    <%= form.label :date_of_birth, class: "h3" %><br>
+                    <%= form.date_select :date_of_birth,  class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+                  </div>
+
+  
+
+               
+
+                  <div class="actions" >
+                   <%= button_tag(type: 'submit', class: "btn btn-primary") do %> <i class="icon-ok icon-white"></i> Guardar <% end %>
+                  </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

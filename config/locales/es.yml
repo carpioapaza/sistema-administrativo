@@ -1,0 +1,12 @@
+es:
+  activerecord:
+    models:
+      friend:
+        one: 'Amigo'
+        other: 'Amigos'
+    attributes:
+      friend:
+          name: 'Nombre'
+          surname: 'Apellido'
+          address: 'Direccion'
+          date_of_birth: 'Fecha Nacimiento'

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-sm">
+
+
+<h1 class="text-center">Amigos CRUD | VER</h1>
+
+<table class="table align-middle mb-0 bg-white">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Direccion</th>
+      <th>F. Nacimiento</th>
+      
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+      <tr>
+        <td><%= @friend.name %></td>
+        <td><%= @friend.surname %></td>
+        <td><%= @friend.address %></td>
+        <td><%= @friend.date_of_birth %></td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<%= link_to edit_friend_path(@friend) do %> <button type="button" class="btn btn-outline-primary"> <i class="bi bi-pencil-square"></i> Editar</button> <% end %>
+        <br>
+        <br>
+        <%= link_to friends_path do %> <button type="button" class="btn btn-outline-danger"> <i class="bi bi-skip-backward"></i> Atras</button> <% end %>
+</div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
