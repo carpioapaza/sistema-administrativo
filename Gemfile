@@ -60,3 +60,5 @@ gem 'rails-i18n'
 gem 'httparty'
 
 gem "rename"
+
+gem  'devise'
